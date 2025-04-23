@@ -1,11 +1,21 @@
 Package: blue
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: A simple R interface to the BLUE JSON API that allows you to track results of Paris 2024 Olympic Games
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    c(person("Helen", "Zhou", , "hzhou70@smith.edu", role = c("aut", "cre")),  person("Ruth",   "Kendall", ,"rkendall@smith.edu",
+               role = "aut"))
+Description: A simple R interface to the BLUE JSON API that allows you to track results of Paris 2024 Olympic Games
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Imports: 
+    httr,
+    jsonlite,
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+URL: https://github.com/Helenzzz07/blue
+BugReports: https://github.com/Helenzzz07/blue/issues
