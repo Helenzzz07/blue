@@ -2,16 +2,17 @@
 #' @description
 #' Given an athlete's name, this function finds the athlete's results URL
 #' from the results.csv file included in the blue package.
-#'
 #' @importFrom utils read.csv
+#'
 #' @export
+#'
 find_athlete_url <- function(athlete_name) {
 
   file_path <- system.file("results.csv", package = "blue")
 
-  if (file_path == "") {
+  if (file_path == " ") {
     stop("results.csv not found in the installed blue package.")
-  }
+    }
 
   data <- read.csv(file_path, stringsAsFactors = FALSE)
 
@@ -21,5 +22,7 @@ find_athlete_url <- function(athlete_name) {
     warning("Athlete not found.")
     return(NA)
   }
+
   return(match_row$results_url)
 }
+find_athlete_url()
