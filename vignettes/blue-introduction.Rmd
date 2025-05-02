@@ -1,0 +1,56 @@
+---
+title: "blue-introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{blue-introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(blue)
+```
+
+
+## Introduction
+
+The `blue` package helps you track and visualize performance data for athletes in the Paris 2024 Olympic Games.
+
+In this vignette, we'll show you how to use the core functions of the package to retrieve and visualize performance data for individual athletes.
+
+### Install the package
+
+To install the `blue` package from GitHub, use the following command:
+
+```{r install, eval=FALSE}
+devtools::install_github("Helenzzz07/blue")
+```
+
+
+```{r}
+library(blue)
+```
+
+
+```{r}
+find_athlete("Álvaro MARTÍN")
+```
+
+```{r}
+plot_athlete_performance("Álvaro MARTÍN")
+```
+
+
+```{r}
+devtools::build_vignettes()
+```
+
+
+
