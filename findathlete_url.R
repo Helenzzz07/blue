@@ -11,9 +11,9 @@
 #' This function checks the `results.csv` file in the installed `blue` package for a matching athlete
 #' and retrieves their URL.
 #' @examples
-#' find_athlete_url("Michael Phelps")
-#' find_athlete_url("Usain Bolt")
-#' find_athlete_url("John Doe")  # This will return NA and issue a warning.
+#' find_athlete_url("Kyle Swan")
+#' find_athlete_url("Ricardo Ortiz")
+#' find_athlete_url("Callum Wilkinson")
 #' @seealso
 #' `load_results()`
 #' @importFrom utils read.csv
