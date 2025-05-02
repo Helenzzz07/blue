@@ -2,28 +2,22 @@
 % Please edit documentation in R/athlete_function.R
 \name{find_athlete}
 \alias{find_athlete}
-\title{Find Athlete URL}
+\title{Plot Athlete Performance}
 \usage{
 find_athlete(athlete_name)
 }
 \arguments{
-\item{athlete_name}{A character string representing the full name of the athlete whose
-results URL is to be retrieved.}
+\item{athlete_name}{A character string representing the athlete's name.}
 }
 \value{
-A character string containing the URL to the athlete's results. If the athlete is not found, returns \code{NA}.
+A ggplot object showing the athlete's performance, or a warning if not found.
 }
 \description{
-Given an athlete's full name, this function retrieves the results URL from the
-\code{olympic_results} dataset included in the \code{blue} package. It performs an exact match on the name,
-and returns the first matching URL. If no match is found, it returns \code{NA} and issues a warning.
-}
-\details{
-The function uses the \code{olympic_results.rda} dataset (saved with \code{usethis::use_data()}) as the lookup source.
-This is the preferred method for accessing embedded package data rather than reading from a raw CSV file.
+Given an athlete's name, this function finds their performance data in the
+\code{olympic_results} dataset and creates a bar chart of their \code{mark} in each event.
 }
 \examples{
-find_athlete("Álvaro MARTÍN")
-find_athlete("Massimo STANO")
-find_athlete("Jane Doe")  # Will return NA and issue a warning
+plot_athlete_performance("Álvaro MARTÍN")
+plot_athlete_performance("Brian Daniel PINTADO")
+
 }
