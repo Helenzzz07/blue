@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # blue 
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/Helenzzz07/blue/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Helenzzz07/blue/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/Helenzzz07/blue/graph/badge.svg)](https://app.codecov.io/gh/Helenzzz07/blue)
 <!-- badges: end -->
 
 The blue package provides a simple R interface to track Paris 2024 Olympic Games (Track and Field results.  

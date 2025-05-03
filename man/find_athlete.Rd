@@ -20,5 +20,4 @@ Given an athlete's name, this function finds their results URL from the
 find_athlete("Álvaro MARTÍN")
 find_athlete("Usain BOLT")
 find_athlete("Unknown Athlete")
-
 }

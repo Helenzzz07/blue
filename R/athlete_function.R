@@ -11,7 +11,7 @@
 #' find_athlete("Álvaro MARTÍN")
 #' find_athlete("Usain BOLT")
 #' find_athlete("Unknown Athlete")
-#'
+#' @importFrom dplyr filter mutate arrange
 #' @export
 find_athlete <- function(athlete_name) {
   data("olympic_results", package = "blue")
@@ -44,7 +44,7 @@ find_athlete <- function(athlete_name) {
 plot_event_top10 <- function(event_name) {
   data("olympic_results", package = "blue")
 
-  library(dplyr)
+
   library(stringr)
   library(ggplot2)
 
