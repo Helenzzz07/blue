@@ -25,7 +25,7 @@ The `blue` package helps you track and visualize performance data for athletes i
 
 In this vignette, we'll show you how to use the core functions of the package to retrieve and visualize performance data for individual athletes.
 
-### Install the package
+### Install the package 
 
 To install the `blue` package from GitHub, use the following command:
 
@@ -51,6 +51,6 @@ plot_athlete_performance("Álvaro MARTÍN")
 ```{r}
 devtools::build_vignettes()
 ```
+ 
 
-
-
+ 
