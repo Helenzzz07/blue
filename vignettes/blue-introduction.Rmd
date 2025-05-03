@@ -44,7 +44,7 @@ find_athlete("Álvaro MARTÍN")
 ```
 
 ```{r}
-plot_athlete_performance("Álvaro MARTÍN")
+plot_event_top10("20 Kilometres Race Walk")
 ```
 
 

@@ -18,6 +18,6 @@ based on their raw \code{mark} times (cleaned to remove non-numeric parts),
 and plots a bar chart with their original time strings.
 }
 \examples{
-plot_event_top10_original_time("20 Kilometres Race Walk")
+plot_event_top10("20 Kilometres Race Walk")
 
 }

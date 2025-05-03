@@ -35,7 +35,7 @@ find_athlete <- function(athlete_name) {
 #' @return A ggplot2 plot object.
 #'
 #' @examples
-#' plot_event_top10_original_time("20 Kilometres Race Walk")
+#' plot_event_top10("20 Kilometres Race Walk")
 #'
 #' @importFrom dplyr filter mutate arrange slice
 #' @importFrom stringr str_trim str_detect str_split str_extract fixed
