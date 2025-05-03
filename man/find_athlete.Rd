@@ -2,22 +2,23 @@
 % Please edit documentation in R/athlete_function.R
 \name{find_athlete}
 \alias{find_athlete}
-\title{Plot Athlete Performance}
+\title{Find Athlete Results URL}
 \usage{
 find_athlete(athlete_name)
 }
 \arguments{
-\item{athlete_name}{A character string representing the athlete's name.}
+\item{athlete_name}{A character string representing the athlete's full name.}
 }
 \value{
-A ggplot object showing the athlete's performance, or a warning if not found.
+A character string with the URL of the athlete's results, or NA if not found.
 }
 \description{
-Given an athlete's name, this function finds their performance data in the
-\code{olympic_results} dataset and creates a bar chart of their \code{mark} in each event.
+Given an athlete's name, this function finds their results URL from the
+\code{olympic_results} dataset.
 }
 \examples{
-plot_athlete_performance("Álvaro MARTÍN")
-plot_athlete_performance("Brian Daniel PINTADO")
+find_athlete("Álvaro MARTÍN")
+find_athlete("Usain BOLT")
+find_athlete("Unknown Athlete")
 
 }

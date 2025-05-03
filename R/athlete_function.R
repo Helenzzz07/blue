@@ -1,20 +1,17 @@
-#' @title Plot Athlete Performance
+#' @title Find Athlete Results URL
 #'
 #' @description
-#' Given an athlete's name, this function finds their performance data in the
-#' `olympic_results` dataset and creates a bar chart of their `mark` in each event.
+#' Given an athlete's name, this function finds their results URL from the
+#' `olympic_results` dataset.
 #'
-#' @param athlete_name A character string representing the athlete's name.
-#' @return A ggplot object showing the athlete's performance, or a warning if not found.
+#' @param athlete_name A character string representing the athlete's full name.
+#' @return A character string with the URL of the athlete's results, or NA if not found.
 #'
 #' @examples
-#' plot_athlete_performance("Álvaro MARTÍN")
-#' plot_athlete_performance("Brian Daniel PINTADO")
+#' find_athlete("Álvaro MARTÍN")
+#' find_athlete("Usain BOLT")
+#' find_athlete("Unknown Athlete")
 #'
-#' @importFrom ggplot2 ggplot aes geom_col theme_minimal labs theme element_text
-#' @importFrom stringr str_detect fixed
-#' @export
-
 #' @export
 find_athlete <- function(athlete_name) {
   data("olympic_results", package = "blue")
@@ -44,7 +41,7 @@ find_athlete <- function(athlete_name) {
 #' @importFrom stringr str_trim str_detect str_split str_extract fixed
 #' @importFrom ggplot2 ggplot aes geom_col geom_text labs theme_minimal theme element_text
 #' @export
-plot_event_top10_original_time <- function(event_name) {
+plot_event_top10 <- function(event_name) {
   data("olympic_results", package = "blue")
 
   library(dplyr)
