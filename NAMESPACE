@@ -2,6 +2,7 @@
 
 export(find_athlete)
 export(plot_event_top10)
+importFrom(dplyr,"%>%")
 importFrom(dplyr,arrange)
 importFrom(dplyr,filter)
 importFrom(dplyr,mutate)

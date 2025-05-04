@@ -27,17 +27,26 @@ devtools::install_github("Helenzzz07/blue")
 
 ## Example
 
-This is a basic example that shows how to look up and visualize an
+This is a basic example that shows how to look up and visualize top 10
 athlete’s performance:
 
 ``` r
 library(blue)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 
 # Find the results URL for a specific athlete
 find_athlete("Álvaro MARTÍN")
 #> [1] "https://worldathletics.org/results/olympic-games/2024/the-xxxiii-olympic-games-7087/men/20-kilometres-race-walk/final/result#resultheader"
 
-# Plot the athlete's performance
+# Plot the top 10 athletes's performance in final round
 plot_event_top10 ("20 Kilometres Race Walk")
 ```
 

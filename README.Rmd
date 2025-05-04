@@ -20,8 +20,8 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/Helenzzz07/blue/graph/badge.svg)](https://app.codecov.io/gh/Helenzzz07/blue)
 <!-- badges: end -->
 
-The blue package provides a simple R interface to track Paris 2024 Olympic Games (Track and Field results.  
-It is distinct from other packages because it includes 2024 data and supports specific athlete-level filtering
+The blue package provides a simple R interface for exploring track and field results from the Paris 2024 Olympic Games.
+It is distinct from other packages because it includes 2024 athlete-level data and supports flexible filtering
 
   
 ## Installation
@@ -37,15 +37,16 @@ devtools::install_github("Helenzzz07/blue")
 
 ## Example
 
-This is a basic example that shows how to look up and visualize an athlete’s performance:
+This is a basic example that shows how to look up and visualize top 10 athlete’s performance:
  
 ```{r}
 library(blue)
+library(dplyr)
 
 # Find the results URL for a specific athlete
 find_athlete("Álvaro MARTÍN")
 
-# Plot the athlete's performance
+# Plot the top 10 athletes's performance in final round
 plot_event_top10 ("20 Kilometres Race Walk")
 ```
 

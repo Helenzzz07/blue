@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(blue)
+library(dplyr)
+library(ggplot2)
 ```
 
 
@@ -23,7 +25,6 @@ library(blue)
 
 The `blue` package helps you track and visualize performance data for athletes in the Paris 2024 Olympic Games.
 
-In this vignette, we'll show you how to use the core functions of the package to retrieve and visualize performance data for individual athletes.
 
 ### Install the package
 
@@ -38,19 +39,16 @@ devtools::install_github("Helenzzz07/blue")
 library(blue)
 ```
 
-
+# Find the results URL for a specific athlete
 ```{r}
 find_athlete("Álvaro MARTÍN")
 ```
 
+# Plot the top 10 athletes's performance in final round
 ```{r}
 plot_event_top10("20 Kilometres Race Walk")
 ```
 
-
-```{r}
-devtools::build_vignettes()
-```
 
 
 

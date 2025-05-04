@@ -9,7 +9,7 @@
 #' @examples
 #' find_athlete("Álvaro MARTÍN")
 #' find_athlete("Unknown Athlete")
-#' @importFrom dplyr filter mutate arrange
+#' @importFrom dplyr filter mutate arrange %>%
 #' @export
 find_athlete <- function(athlete_name) {
   data("olympic_results", package = "blue")
