@@ -28,7 +28,7 @@ It is distinct from other packages because it includes 2024 data and supports sp
 
 You can install the development version of blue from [GitHub](https://github.com/) with:
 
-```{r}
+```{r, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("Helenzzz07/blue")
 ```
