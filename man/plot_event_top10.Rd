@@ -2,7 +2,7 @@
 % Please edit documentation in R/athlete_function.R
 \name{plot_event_top10}
 \alias{plot_event_top10}
-\title{Plot Top 10 Athletes in Original Time Format}
+\title{Plot Top 10 Athletes in Final Round}
 \usage{
 plot_event_top10(event_name)
 }
@@ -10,14 +10,13 @@ plot_event_top10(event_name)
 \item{event_name}{A character string, the event to plot.}
 }
 \value{
-A ggplot2 plot object.
+A ggplot2 plot object showing top athletes' performance. Returns NULL with a warning if no valid data is found.
 }
 \description{
-For a given event, this function shows the top 10 fastest athletes
+For a given event, this function shows the top 10 fastest athletes in final round
 based on their raw \code{mark} times (cleaned to remove non-numeric parts),
-and plots a bar chart with their original time strings.
+and plots a bar chart with their time strings.
 }
 \examples{
 plot_event_top10("20 Kilometres Race Walk")
-
 }

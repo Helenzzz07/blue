@@ -5,11 +5,9 @@
 #' `olympic_results` dataset.
 #'
 #' @param athlete_name A character string representing the athlete's full name.
-#' @return A character string with the URL of the athlete's results, or NA if not found.
-#'
+#' @return A character string containing the athlete’s results URL. Returns `NA` with a warning if no match is found.
 #' @examples
 #' find_athlete("Álvaro MARTÍN")
-#' find_athlete("Usain BOLT")
 #' find_athlete("Unknown Athlete")
 #' @importFrom dplyr filter mutate arrange
 #' @export
@@ -24,52 +22,47 @@ find_athlete <- function(athlete_name) {
 }
 
 
-#' @title Plot Top 10 Athletes in Original Time Format
-#'
+#' @title Plot Top 10 Athletes in Final Round
 #' @description
-#' For a given event, this function shows the top 10 fastest athletes
+#' For a given event, this function shows the top 10 fastest athletes in final round
 #' based on their raw `mark` times (cleaned to remove non-numeric parts),
-#' and plots a bar chart with their original time strings.
+#' and plots a bar chart with their time strings.
 #'
 #' @param event_name A character string, the event to plot.
-#' @return A ggplot2 plot object.
-#'
+#' @return A ggplot2 plot object showing top athletes' performance. Returns NULL with a warning if no valid data is found.
 #' @examples
 #' plot_event_top10("20 Kilometres Race Walk")
-#'
 #' @importFrom dplyr filter mutate arrange slice
-#' @importFrom stringr str_trim str_detect str_split str_extract fixed
+#' @importFrom stringr str_trim str_detect str_split str_extract fixed str_replace
 #' @importFrom ggplot2 ggplot aes geom_col geom_text labs theme_minimal theme element_text
 #' @export
 plot_event_top10 <- function(event_name) {
   data("olympic_results", package = "blue")
-
-
-  library(stringr)
-  library(ggplot2)
-
   # Helper: convert to numeric for sorting
   extract_numeric <- function(mark) {
     mark <- str_trim(mark)
     if (str_detect(mark, ":")) {
       parts <- str_split(mark, ":")[[1]]
-      nums <- as.numeric(str_extract(parts, "\\d+"))
+      nums <- suppressWarnings(as.numeric(parts))
+      if (any(is.na(nums))) return(NA_real_)
       if (length(nums) == 2) return(nums[1]*60 + nums[2])
       if (length(nums) == 3) return(nums[1]*3600 + nums[2]*60 + nums[3])
       return(NA_real_)
     }
     as.numeric(str_extract(mark, "^[0-9]+\\.?[0-9]*"))
   }
-
   clean_data <- olympic_results %>%
-    filter(str_detect(event, fixed(event_name, ignore_case = TRUE))) %>%
+    filter(
+      str_detect(event, fixed(event_name, ignore_case = TRUE)),
+      round == "Final"
+    ) %>%
     mutate(
       numeric_mark = sapply(mark, extract_numeric),
       display_mark = str_trim(str_extract(mark, "[0-9:\\.]+"))
     ) %>%
     filter(!is.na(numeric_mark)) %>%
     arrange(numeric_mark) %>%
-    slice(1:5)
+    slice(1:10)
 
   if (nrow(clean_data) == 0) {
     warning("No valid data found for event: ", event_name)
@@ -80,16 +73,8 @@ plot_event_top10 <- function(event_name) {
   ggplot(clean_data, aes(x = reorder(name, numeric_mark), y = numeric_mark)) +
     geom_col(fill = "steelblue") +
     geom_text(aes(label = display_mark), vjust = -0.5, size = 3.5) +
-    scale_y_continuous(
-      labels = function(x) {
-        ifelse(x >= 60,
-               sprintf("%d:%02d", floor(x / 60), round(x %% 60)),
-               sprintf("%.2f", x))
-      },
-      expand = expansion(mult = c(0, 0.1))
-    ) +
     labs(
-      title = paste("Top 5 Fastest Athletes in", event_name),
+      title = paste("Top 10 Fastest Athletes in", event_name),
       x = "Athlete",
       y = "Performance"
     ) +

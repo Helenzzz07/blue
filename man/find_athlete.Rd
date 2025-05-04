@@ -10,7 +10,7 @@ find_athlete(athlete_name)
 \item{athlete_name}{A character string representing the athlete's full name.}
 }
 \value{
-A character string with the URL of the athlete's results, or NA if not found.
+A character string containing the athlete’s results URL. Returns \code{NA} with a warning if no match is found.
 }
 \description{
 Given an athlete's name, this function finds their results URL from the
@@ -18,6 +18,5 @@ Given an athlete's name, this function finds their results URL from the
 }
 \examples{
 find_athlete("Álvaro MARTÍN")
-find_athlete("Usain BOLT")
 find_athlete("Unknown Athlete")
 }
