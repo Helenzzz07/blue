@@ -12,7 +12,8 @@ RoxygenNote: 7.3.2
 Imports:
     dplyr,
     ggplot2,
-    stringr
+    stringr,
+    magrittr
 Suggests:
     knitr, 
     rmarkdown,

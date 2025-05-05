@@ -9,11 +9,9 @@
 #' @examples
 #' find_athlete("Álvaro MARTÍN")
 #' find_athlete("Unknown Athlete")
-#' @importFrom dplyr filter mutate arrange %>%
 #' @export
 find_athlete <- function(athlete_name) {
-  data("olympic_results", package = "blue")
-  match_row <- olympic_results[olympic_results$name == athlete_name, ]
+  match_row <- blue::olympic_results[blue::olympic_results$name == athlete_name, ]
   if (nrow(match_row) == 0) {
     warning("Athlete not found.")
     return(NA)
@@ -33,11 +31,11 @@ find_athlete <- function(athlete_name) {
 #' @examples
 #' plot_event_top10("20 Kilometres Race Walk")
 #' @importFrom dplyr filter mutate arrange slice
+#' @importFrom magrittr %>%
 #' @importFrom stringr str_trim str_detect str_split str_extract fixed str_replace
 #' @importFrom ggplot2 ggplot aes geom_col geom_text labs theme_minimal theme element_text
 #' @export
 plot_event_top10 <- function(event_name) {
-  data("olympic_results", package = "blue")
   # Helper: convert to numeric for sorting
   extract_numeric <- function(mark) {
     mark <- str_trim(mark)
@@ -51,7 +49,7 @@ plot_event_top10 <- function(event_name) {
     }
     as.numeric(str_extract(mark, "^[0-9]+\\.?[0-9]*"))
   }
-  clean_data <- olympic_results %>%
+  clean_data <- blue::olympic_results %>%
     filter(
       str_detect(event, fixed(event_name, ignore_case = TRUE)),
       round == "Final"
