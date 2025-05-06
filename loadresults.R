@@ -48,3 +48,5 @@ load_results <- function(api_url, year = 2024) {
 
   return(results_df)
 }
+
+
