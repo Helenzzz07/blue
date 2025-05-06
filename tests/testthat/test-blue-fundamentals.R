@@ -7,8 +7,6 @@ test_that("find_athlete returns correct type and handles missing names", {
   expect_true(is.na(missing_url))
 })
 
-library(testthat)
-library(vdiffr)
 
 test_that("plot_event_top10 produces a consistent plot for 100 metres", {
   vdiffr::expect_doppelganger(
