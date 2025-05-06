@@ -61,7 +61,6 @@ plot_event_top10 <- function(event_name) {
     filter(!is.na(numeric_mark)) %>%
     arrange(numeric_mark) %>%
     slice(1:10)
-
   if (nrow(clean_data) == 0) {
     warning("No valid data found for event: ", event_name)
     return(NULL)
