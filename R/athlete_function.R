@@ -34,6 +34,7 @@ find_athlete <- function(athlete_name) {
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_trim str_detect str_split str_extract fixed str_replace
 #' @importFrom ggplot2 ggplot aes geom_col geom_text labs theme_minimal theme element_text
+#' @importFrom stats reorder
 #' @export
 plot_event_top10 <- function(event_name) {
   # Helper: convert to numeric for sorting
