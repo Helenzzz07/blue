@@ -37,7 +37,6 @@ find_athlete <- function(athlete_name) {
 #' @importFrom stats reorder
 #' @export
 plot_event_top10 <- function(event_name) {
-  # Helper: convert to numeric for sorting
   extract_numeric <- function(mark) {
     mark <- str_trim(mark)
     if (str_detect(mark, ":")) {
