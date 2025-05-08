@@ -33,14 +33,7 @@ athlete’s performance:
 ``` r
 library(blue)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+
 
 # Find the results URL for a specific athlete
 find_athlete("Álvaro MARTÍN")
