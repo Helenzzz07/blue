@@ -77,7 +77,7 @@ plot_event_top10 <- function(event_name) {
       display_mark = str_trim(str_extract(.data$mark, "[0-9:\\.]+"))
     ) %>%
     left_join(event_type_info, by = "event") %>%
-    arrange(if_else(.data$better_when == "shorter", .data$numeric_mark, -.data$numeric_mark)) %>%
+    arrange(if_else(.data$better_when == "shorter", .data$numeric_mark, .data$numeric_mark)) %>%
     slice(1:10)
 
   if (nrow(clean_data) == 0) {

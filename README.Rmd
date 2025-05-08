@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The blue package provides a simple R interface for exploring track and field results from the Paris 2024 Olympic Games.
-It is distinct from other packages because it includes 2024 athlete-level data and supports flexible filtering
+It is distinct from other packages because it includes 2024 athlete-level data and supports flexible filtering and plotting.
 
   
 ## Installation

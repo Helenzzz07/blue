@@ -10,10 +10,10 @@
 coverage](https://codecov.io/gh/Helenzzz07/blue/graph/badge.svg)](https://app.codecov.io/gh/Helenzzz07/blue)
 <!-- badges: end -->
 
-The blue package provides a simple R interface to track Paris 2024
-Olympic Games (Track and Field results.  
-It is distinct from other packages because it includes 2024 data and
-supports specific athlete-level filtering
+The blue package provides a simple R interface for exploring track and
+field results from the Paris 2024 Olympic Games. It is distinct from
+other packages because it includes 2024 athlete-level data and supports
+flexible filtering and plotting.
 
 ## Installation
 
