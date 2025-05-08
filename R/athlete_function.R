@@ -77,12 +77,18 @@ plot_event_top10 <- function(event_name) {
     ) %>%
     mutate(
       numeric_mark = sapply(.data$mark, extract_numeric),
-      display_mark = str_trim(str_extract(.data$mark, "[0-9\\.]+$"))
+      display_mark = .data$mark
     ) %>%
     left_join(event_type_info, by = "event") %>%
-    filter(!is.na(.data$numeric_mark)) %>%
-    arrange(if_else(.data$better_when == "shorter", .data$numeric_mark, -.data$numeric_mark)) %>%
-    slice(1:10)
+    filter(!is.na(.data$numeric_mark))
+
+  if (all(clean_data$better_when == "shorter")) {
+      clean_data <- clean_data %>% arrange(.data$numeric_mark)
+    } else {
+      clean_data <- clean_data %>% arrange(desc(.data$numeric_mark))
+    }
+
+  clean_data <- clean_data %>% slice(1:10)
 
   if (nrow(clean_data) == 0) {
     warning("No valid data found for event: ", event_name)
