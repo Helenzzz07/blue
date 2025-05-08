@@ -30,7 +30,7 @@ find_athlete <- function(athlete_name) {
 #' @return A ggplot2 plot object showing top athletes' performance. Returns NULL with a warning if no valid data is found.
 #' @examples
 #' plot_event_top10("20 Kilometres Race Walk")
-#' @importFrom dplyr filter mutate arrange slice left_join if_else
+#' @importFrom dplyr filter mutate arrange slice left_join if_else desc
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_trim str_detect str_split str_extract fixed str_replace
 #' @importFrom ggplot2 ggplot aes geom_col geom_text labs theme_minimal theme element_text
@@ -71,13 +71,17 @@ plot_event_top10 <- function(event_name) {
   )
 
   clean_data <- blue::olympic_results %>%
-    filter(str_detect(.data$event, fixed(event_name, ignore_case = TRUE))) %>%
+    filter(
+      str_detect(.data$event, fixed(event_name, ignore_case = TRUE)),
+      round == "Final"
+    ) %>%
     mutate(
       numeric_mark = sapply(.data$mark, extract_numeric),
-      display_mark = str_trim(str_extract(.data$mark, "[0-9:\\.]+"))
+      display_mark = str_trim(str_extract(.data$mark, "[0-9\\.]+$"))
     ) %>%
     left_join(event_type_info, by = "event") %>%
-    arrange(if_else(.data$better_when == "shorter", .data$numeric_mark, .data$numeric_mark)) %>%
+    filter(!is.na(.data$numeric_mark)) %>%
+    arrange(if_else(.data$better_when == "shorter", .data$numeric_mark, -.data$numeric_mark)) %>%
     slice(1:10)
 
   if (nrow(clean_data) == 0) {

@@ -3,6 +3,7 @@
 export(find_athlete)
 export(plot_event_top10)
 importFrom(dplyr,arrange)
+importFrom(dplyr,desc)
 importFrom(dplyr,filter)
 importFrom(dplyr,if_else)
 importFrom(dplyr,left_join)
