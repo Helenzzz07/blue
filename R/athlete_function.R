@@ -30,7 +30,7 @@ find_athlete <- function(athlete_name) {
 #' @return A ggplot2 plot object showing top athletes' performance. Returns NULL with a warning if no valid data is found.
 #' @examples
 #' plot_event_top10("20 Kilometres Race Walk")
-#' @importFrom dplyr filter mutate arrange slice
+#' @importFrom dplyr filter mutate arrange slice left_join if_else
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_trim str_detect str_split str_extract fixed str_replace
 #' @importFrom ggplot2 ggplot aes geom_col geom_text labs theme_minimal theme element_text
@@ -51,17 +51,33 @@ plot_event_top10 <- function(event_name) {
     as.numeric(str_extract(mark, "^[0-9]+\\.?[0-9]*"))
   }
 
+  event_type_info <- tibble::tibble(
+    event = c(
+      "10,000 Metres", "100 Metres", "100 Metres Hurdles", "110 Metres Hurdles",
+      "1500 Metres", "20 Kilometres Race Walk", "200 Metres", "3000 Metres Steeplechase",
+      "400 Metres", "400 Metres Hurdles", "4x100 Metres Relay", "4x400 Metres Relay",
+      "5000 Metres", "800 Metres", "Discus Throw", "Hammer Throw", "High Jump",
+      "Javelin Throw", "Long Jump", "Marathon", "Marathon Race Walk Mixed Relay",
+      "Pole Vault", "Shot Put", "Triple Jump"
+    ),
+    better_when = c(
+      "shorter", "shorter", "shorter", "shorter",
+      "shorter", "shorter", "shorter", "shorter",
+      "shorter", "shorter", "shorter", "shorter",
+      "shorter", "shorter", "longer", "longer",
+      "longer", "longer", "longer", "shorter",
+      "shorter", "longer", "longer", "longer"
+    )
+  )
+
   clean_data <- blue::olympic_results %>%
-    filter(
-      str_detect(.data$event, fixed(event_name, ignore_case = TRUE)),
-      .data$round == "Final"
-    ) %>%
+    filter(str_detect(.data$event, fixed(event_name, ignore_case = TRUE))) %>%
     mutate(
       numeric_mark = sapply(.data$mark, extract_numeric),
       display_mark = str_trim(str_extract(.data$mark, "[0-9:\\.]+"))
     ) %>%
-    filter(!is.na(.data$numeric_mark)) %>%
-    arrange(.data$numeric_mark) %>%
+    left_join(event_type_info, by = "event") %>%
+    arrange(if_else(.data$better_when == "shorter", .data$numeric_mark, -.data$numeric_mark)) %>%
     slice(1:10)
 
   if (nrow(clean_data) == 0) {
@@ -73,7 +89,7 @@ plot_event_top10 <- function(event_name) {
     geom_col(fill = "steelblue") +
     geom_text(aes(label = .data$display_mark), vjust = -0.5, size = 3.5) +
     labs(
-      title = paste("Top 10 Fastest Athletes in", event_name),
+      title = paste("Top 10 Athletes in", event_name),
       x = "Athlete",
       y = "Performance"
     ) +

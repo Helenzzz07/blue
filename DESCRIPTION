@@ -3,7 +3,7 @@ Title: An R package interface for exploring and visualizing results from the Par
 Authors@R: 
     c(person("Helen", "Zhou", , "hzhou70@smith.edu", role = c("aut", "cre")),  
        person("Ruth", "Kendall", ,"rkendall@smith.edu", role = "aut"))
-Description: An R package interface for exploring and visualizing results from the Paris 2024 Olympic Games. It provides functions for retrieving athlete performances, ranking top results by event, and generating plots.
+Description: An R package interface for exploring and visualizing results from the Paris 2024 Olympic Games. It provides functions for retrieving athlete performances, ranking top results by event, and generating plots for the final round.
 License: MIT + file LICENSE
 Version: 0.0.0.9000
 Encoding: UTF-8
@@ -14,7 +14,8 @@ Imports:
     ggplot2,
     stringr,
     magrittr,
-    rlang  
+    rlang,
+    tibble
 Suggests:
     knitr, 
     rmarkdown,
