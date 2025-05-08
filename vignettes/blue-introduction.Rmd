@@ -50,10 +50,3 @@ plot_event_top10("20 Kilometres Race Walk")
 ```
  
 
-<<<<<<< HEAD
- 
-=======
-
-
-
->>>>>>> Helen
