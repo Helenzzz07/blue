@@ -1,8 +1,8 @@
 Package: blue
 Title: An R package interface for exploring and visualizing results from the Paris 2024 Olympic Games
 Authors@R: 
-    c(person("Helen", "Zhou", , "hzhou70@smith.edu", role = c("aut", "cre")),  person("Ruth",   "Kendall", ,"rkendall@smith.edu",
-               role = "aut"))
+    c(person("Helen", "Zhou", , "hzhou70@smith.edu", role = c("aut", "cre")),  
+       person("Ruth", "Kendall", ,"rkendall@smith.edu", role = "aut"))
 Description: An R package interface for exploring and visualizing results from the Paris 2024 Olympic Games. It provides functions for retrieving athlete performances, ranking top results by event, and generating plots.
 License: MIT + file LICENSE
 Version: 0.0.0.9000
@@ -13,7 +13,8 @@ Imports:
     dplyr,
     ggplot2,
     stringr,
-    magrittr
+    magrittr,
+    rlang  
 Suggests:
     knitr, 
     rmarkdown,
@@ -25,4 +26,4 @@ BugReports: https://github.com/Helenzzz07/blue/issues
 Depends: 
     R (>= 3.5)
 LazyData: true
-Config/testthat/edition: 3  
+Config/testthat/edition: 3 
